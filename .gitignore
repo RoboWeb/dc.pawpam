@@ -9,3 +9,8 @@ logs/*
 
 storage/*
 !storage/.gitkeep
+
+phpapp/*
+!phpapp/.gitkeep
+phpapp/directus/*
+!phpapp/directus/.gitkeep

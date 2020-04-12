@@ -36,7 +36,7 @@ RUN apk add --no-cache $DEPS
 
 RUN mkdir $APP_MAIN_DIR \
     && chown -R www-data:www-data $APP_MAIN_DIR \
-    && chmod -R 775 $APP_MAIN_DIR
+    && chmod -R 777 $APP_MAIN_DIR
 
 RUN mkdir -p /var/log/php7 \
     && chown -R www-data:www-data /var/log/php7
