@@ -5,7 +5,7 @@ version: "3.4"
 services:
     phpapp:
         build: ./_docker/phpapp
-        image: phpapp:1.0
+        image: directus:8.6.2
         container_name: phpapp
         env_file: ./.env
         environment: 
@@ -20,11 +20,11 @@ services:
             - db
             # - cache
         volumes:
-            - ./_docker/phpapp/src:${APP_MAIN_DIR}
-            # - ./phpapp:${APP_MAIN_DIR}
-            # - ./storage:${APP_STORAGE_DIR}
+            # - ./_docker/phpapp/src:${APP_MAIN_DIR}
+            - ./phpapp/directus:${APP_MAIN_DIR}
+            - ./storage:${APP_STORAGE_DIR}
             # - ./logs/general:/var/log
-            # - ./logs/phpapp:${APP_MAIN_DIR}/logs
+            - ./logs/phpapp:${APP_MAIN_DIR}/logs
         cap_add:
             - SYS_TIME
             - SYS_NICE
@@ -57,17 +57,17 @@ services:
     
     # PhpMyAdmin container - remove in production!
     # Uncomment when needed
-    # phpma:
-    #   image: phpmyadmin/phpmyadmin:fpm-alpine
-    #   container_name: phpma
-    #   networks:
-    #     - phpappnet
-    #   ports:
-    #     - "8888:80"
-    #   environment:
-    #     PMA_HOST: db
-    #   depends_on:
-    #     - db
+    phpma:
+      image: phpmyadmin/phpmyadmin:latest
+      container_name: phpma
+      networks:
+        - phpappnet
+      ports:
+        - "8888:80"
+      environment:
+        PMA_HOST: db
+      depends_on:
+        - db
 
 networks:
     phpappnet:

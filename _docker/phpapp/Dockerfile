@@ -1,10 +1,10 @@
 FROM php:7.4-cli-alpine3.11
 
-ARG BUILD_DATE
+ARG BUILD_DATE=2020.04.11
 ARG VCS_REF
-ARG PAWPAM_VERSION
-ARG APP_MAIN_DIR=/var/www/app
-ARG REQUIRE_COMPOSER=false
+ARG PAWPAM_VERSION=1.0
+ARG APP_MAIN_DIR=/var/www/directus
+ARG REQUIRE_COMPOSER="false"
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-ref=$VCS_REF \
@@ -34,9 +34,9 @@ RUN apk update \
 
 RUN apk add --no-cache $DEPS
 
-
-RUN mkdir -p $APP_MAIN_DIR
-RUN chown -R www-data:www-data $APP_MAIN_DIR 
+RUN mkdir $APP_MAIN_DIR \
+    && chown -R www-data:www-data $APP_MAIN_DIR \
+    && chmod -R 775 $APP_MAIN_DIR
 
 RUN mkdir -p /var/log/php7 \
     && chown -R www-data:www-data /var/log/php7
@@ -47,10 +47,15 @@ COPY ./confs /
 
 # Copying application source files to the htdocs folder
 COPY ./src $APP_MAIN_DIR
-WORKDIR $APP_MAIN_DIR/public
+
+# RUN git clone https://github.com/directus/directus.git $APP_MAIN_DIR
+
+WORKDIR $APP_MAIN_DIR
 RUN if [ "$REQUIRE_COMPOSER" = "true" ]; then composer install; fi
 
-VOLUME $APP_MAIN_DIR
+WORKDIR $APP_MAIN_DIR/public
+
+# VOLUME $APP_MAIN_DIR
 
 COPY ./scripts /scripts
 RUN chmod -R 755 /scripts
