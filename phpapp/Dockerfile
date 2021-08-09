@@ -1,4 +1,4 @@
-FROM php:7.4-cli-alpine3.11
+FROM php:cli-alpine3.14
 
 ARG BUILD_DATE=2021-07-10
 ARG PAWPAM_VERSION=1.1

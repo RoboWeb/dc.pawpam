@@ -18,7 +18,7 @@
     "automatic-api",
     "database",
     "multi-database",
-    "sql-database",
+    "sql-database"
   ],
   "homepage": "https://github.com/RoboWeb/dc.pampaw",
   "license": "MIT",
@@ -30,11 +30,16 @@
     }
   ],
   "require": {
-    "php": ">=7.3.0"
+    "php": ">=7.4.0"
   },
   "suggest": {
     "ext-memcache": "*",
     "ext-memcached": "*",
     "ext-redis": "*"
+  },
+  "autoload": {
+    "files": [
+      "lib/base.php"
+    ]
   }
 }
