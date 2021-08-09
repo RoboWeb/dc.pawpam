@@ -1,7 +1,7 @@
 {
-  "name": "mevdschee/php-crud-api",
-  "type": "library",
-  "description": "Single file PHP script that adds a REST API to a SQL database.",
+  "name": "dc.pampaw",
+  "type": "baseline",
+  "description": "Docker Compose schema, PHP, Apache, MySQL for PHP Application with",
   "keywords": [
     "api-server",
     "restful",
