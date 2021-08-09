@@ -1,0 +1,40 @@
+{
+  "name": "mevdschee/php-crud-api",
+  "type": "library",
+  "description": "Single file PHP script that adds a REST API to a SQL database.",
+  "keywords": [
+    "api-server",
+    "restful",
+    "mysql",
+    "geospatial",
+    "php",
+    "sql-server",
+    "postgresql",
+    "php-api",
+    "postgis",
+    "crud",
+    "rest-api",
+    "openapi",
+    "automatic-api",
+    "database",
+    "multi-database",
+    "sql-database",
+  ],
+  "homepage": "https://github.com/RoboWeb/dc.pampaw",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tomasz Wolny",
+      "email": "tomasz.wolny@roboweb.eu",
+      "homepage": "https://github.com/RoboWeb"
+    }
+  ],
+  "require": {
+    "php": ">=7.3.0"
+  },
+  "suggest": {
+    "ext-memcache": "*",
+    "ext-memcached": "*",
+    "ext-redis": "*"
+  }
+}
