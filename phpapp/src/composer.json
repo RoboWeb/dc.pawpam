@@ -1,5 +1,5 @@
 {
-  "name": "dc.pampaw",
+  "name": "dc/pampaw",
   "type": "baseline",
   "description": "Docker Compose schema, PHP, Apache, MySQL for PHP Application with",
   "keywords": [
