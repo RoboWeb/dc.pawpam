@@ -1,11 +1,11 @@
 version: "3.9"
 ########################################################
-#                ROBO DC.PAWPAM v.1.2                  #
+#                ROBO DC.PAWPAM v.1.3                  #
 ########################################################
 services:
   phpapp:
     build: ./phpapp
-    image: phpapp:1.2
+    image: phpapp:1.3
     container_name: phpapp
     env_file: ./.env
     environment:

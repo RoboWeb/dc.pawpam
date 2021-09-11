@@ -30,7 +30,8 @@
     }
   ],
   "require": {
-    "php": ">=7.4.0"
+    "php": ">=7.4.0",
+    "bcosca/fatfree-core": "^3.7"
   },
   "suggest": {
     "ext-memcache": "*",
