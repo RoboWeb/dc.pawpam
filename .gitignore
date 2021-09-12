@@ -9,3 +9,6 @@ logs/*
 
 storage/*
 !storage/.gitkeep
+
+phpapp/src/vendor/*
+!phpapp/src/vendor/.gitkeep

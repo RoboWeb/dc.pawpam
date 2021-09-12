@@ -44,3 +44,6 @@ echo "Starting apache..."
 # httpd -D FOREGROUND
 exec /usr/sbin/httpd -D FOREGROUND -f /etc/apache2/httpd.conf &
 exec /usr/sbin/php-fpm7 -F
+
+echo "Start composer install"
+exec /var/www/app composer install --ignore-platform-reqs

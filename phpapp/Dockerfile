@@ -17,7 +17,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 ENV PHP_INI_DIR /etc/php7
 
 # When using Composer, disable the warning about running commands as root/super user
-ENV COMPOSER_ALLOW_SUPERUSER=1
+ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # Persistent runtime dependencies
 ARG DEPS="bash apache2 apache2-proxy composer git grep wget unzip zip"
@@ -49,13 +49,14 @@ COPY ./confs /
 # Copying application source files to the htdocs folder
 COPY ./src $APP_MAIN_DIR
 WORKDIR $APP_MAIN_DIR
-RUN if [ "$REQUIRE_COMPOSER" = "true" ]; then composer install --ignore-platform-reqs; fi
+
+# RUN if [ "$REQUIRE_COMPOSER" = "true" ]; then composer install --ignore-platform-reqs; fi
 
 WORKDIR $APP_MAIN_DIR/public
 VOLUME $APP_MAIN_DIR
 
 COPY ./scripts /scripts
-RUN chmod -R 755 /scripts
+RUN chmod +x /scripts
 
 EXPOSE 80
 
