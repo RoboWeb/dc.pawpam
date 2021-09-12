@@ -40,7 +40,7 @@
   },
   "autoload": {
     "files": [
-      "lib/base.php"
+      "vendor/bcosca/fatfree-core/base.php"
     ]
   }
 }

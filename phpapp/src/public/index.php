@@ -1,1 +1,1 @@
-<?php include_once('../src/app.php');
+<?php include_once('../src/app.php'); ?>

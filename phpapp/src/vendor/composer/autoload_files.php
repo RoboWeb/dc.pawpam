@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '1415281b90bccf6e850f17823773f721' => $baseDir . '/lib/base.php',
+    '1e65f1f2b1c45c4a615e986556cc39bc' => $vendorDir . '/bcosca/fatfree-core/base.php',
 );
