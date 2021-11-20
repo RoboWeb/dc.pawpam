@@ -56,7 +56,7 @@ WORKDIR $APP_MAIN_DIR/public
 VOLUME $APP_MAIN_DIR
 
 COPY ./scripts /scripts
-RUN chmod +x /scripts
+RUN chmod -R 755 /scripts
 
 EXPOSE 80
 
