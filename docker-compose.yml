@@ -1,40 +1,39 @@
-version: "3.9"
 ########################################################
-#                ROBO DC.PAWPAM v.1.1                  #
+#                ROBO DC.PAWPAM v.1.3                  #
 ########################################################
 services:
   phpapp:
-    build: ./phpapp
-    image: phpapp:1.1
+    build:
+      context: ./phpapp
+      target: builder
+    image: phpapp:1.3
     container_name: phpapp
     env_file: ./.env
     environment:
-      MYSQL_HOST: db
+      MYSQL_HOST: mdb
     networks:
       - phpappnet
     ports:
       - "8080:80"
-    depends_on:
-      - db
-      # - cache
+    depends_on: [mdb]
     volumes:
       - ./phpapp/src:${APP_MAIN_DIR}
       - ./storage:${APP_STORAGE_DIR}
-      - ./logs/general:/var/www/logs
+      - ./logs:${APP_LOG_DIR}
       # - ./logs/phpapp:${APP_MAIN_DIR}/logs
     cap_add:
       - SYS_TIME
       - SYS_NICE
 
-  db:
+  mdb:
     build: ./database
-    image: phpappdb:1.1
-    container_name: db
+    image: phpappdb:1.3
+    container_name: mdb
     networks:
       - phpappnet
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
-      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
@@ -61,27 +60,29 @@ services:
   phpma:
     image: phpmyadmin/phpmyadmin
     container_name: phpma
+    restart: unless-stopped
     links:
-      - db
+      - mdb
     networks:
       - phpappnet
     ports:
       - "8888:80"
     environment:
-      PMA_HOST: db
+      PMA_HOST: mdb
       PMA_PORT: ${DB_PORT}
       PMA_USER: root
-      PMA_PASSWORD: ${DB_ROOT_PASS}
+      PMA_PASSWORD: ${DB_ROOT_PASSWORD}
       PMA_PORTS: 3306,3307
       MAX_EXECUTION_TIME: 3000000
       UPLOAD_LIMIT: 6G
       PMA_QUERYHISTORYDB: 1
       PMA_QUERYHISTORYMAX: 1000
     depends_on:
-      - db
+      - mdb
 
 networks:
   phpappnet:
+    driver: bridge
 
 volumes:
   dbdata:

@@ -1,8 +1,8 @@
 # DC.PAMPAW
 
-## v.1.2
+## v.1.3
 
-**D**ocker **C**ompose schema, **P**HP, **A**pache, **M**ySQL for **P**HP **A**pplication **w**ith:
+**D**ocker **C**ompose schema, **P**HP, **A**pache, **M**ariaDB for **P**HP **A**pplication **W**ith:
 
 ---
 
