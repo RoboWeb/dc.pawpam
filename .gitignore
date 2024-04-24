@@ -9,3 +9,5 @@ logs/*
 
 storage/*
 !storage/.gitkeep
+
+*.DS_Store
