@@ -58,7 +58,7 @@ services:
   # PhpMyAdmin container - remove in production!
   # Uncomment when needed
   phpma:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin
     container_name: phpma
     restart: unless-stopped
     links:
